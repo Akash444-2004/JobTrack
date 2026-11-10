@@ -1,0 +1,428 @@
+:root {
+  --jt-bg: #f8fafc;
+  --jt-surface: #ffffff;
+  --jt-surface-muted: #f1f5f9;
+  --jt-sidebar-bg: #0f172a;
+  --jt-sidebar-hover: rgba(255, 255, 255, 0.07);
+  --jt-sidebar-active: rgba(99, 102, 241, 0.22);
+  --jt-primary: #4f46e5;
+  --jt-primary-hover: #4338ca;
+  --jt-primary-soft: #eef2ff;
+  --jt-text: #0f172a;
+  --jt-text-muted: #64748b;
+  --jt-border: #e2e8f0;
+  --jt-radius: 14px;
+  --jt-radius-sm: 10px;
+  --jt-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --jt-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+  --jt-sidebar-width: 260px;
+  --jt-navbar-height: 68px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--jt-bg);
+  color: var(--jt-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, .jt-heading {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* App Shell Layout */
+.jt-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.jt-sidebar {
+  width: var(--jt-sidebar-width);
+  background: linear-gradient(180deg, #0f172a 0%, #111c36 100%);
+  color: #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1040;
+  transition: transform 0.25s ease;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.jt-sidebar-brand {
+  height: var(--jt-navbar-height);
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.jt-brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.jt-brand-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.45);
+}
+
+.jt-sidebar-nav {
+  flex: 1;
+  padding: 1.25rem 0.85rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.jt-nav-section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  padding: 0.5rem 0.75rem 0.25rem;
+}
+
+.jt-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 10px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: all 0.18s ease;
+  border: 1px solid transparent;
+}
+
+.jt-nav-link:hover {
+  background-color: var(--jt-sidebar-hover);
+  color: #ffffff;
+}
+
+.jt-nav-link.active {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.28) 0%, rgba(79, 70, 229, 0.14) 100%);
+  color: #ffffff;
+  border-color: rgba(129, 140, 248, 0.3);
+  font-weight: 600;
+}
+
+.jt-sidebar-footer {
+  padding: 1rem 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.jt-main-area {
+  flex: 1;
+  margin-left: var(--jt-sidebar-width);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.jt-navbar {
+  height: var(--jt-navbar-height);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--jt-border);
+  padding: 0 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+.jt-content {
+  flex: 1;
+  padding: 1.75rem;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Cards & Surfaces */
+.jt-card {
+  background: var(--jt-surface);
+  border: 1px solid var(--jt-border);
+  border-radius: var(--jt-radius);
+  box-shadow: var(--jt-shadow-sm);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.jt-card-hover:hover {
+  box-shadow: var(--jt-shadow);
+  transform: translateY(-2px);
+}
+
+.jt-kpi-card {
+  background: var(--jt-surface);
+  border: 1px solid var(--jt-border);
+  border-radius: var(--jt-radius);
+  padding: 1.15rem 1.25rem;
+  box-shadow: var(--jt-shadow-sm);
+  transition: all 0.2s ease;
+  height: 100%;
+}
+
+.jt-kpi-card:hover {
+  box-shadow: var(--jt-shadow);
+  transform: translateY(-2px);
+}
+
+.jt-kpi-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Badges & Pills */
+.jt-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1.2;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.jt-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Avatar */
+.jt-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Buttons & Form Enhancements */
+.btn-primary {
+  background-color: var(--jt-primary);
+  border-color: var(--jt-primary);
+  font-weight: 500;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--jt-primary-hover);
+  border-color: var(--jt-primary-hover);
+}
+
+.form-control,
+.form-select {
+  border-color: var(--jt-border);
+  border-radius: var(--jt-radius-sm);
+  padding: 0.58rem 0.85rem;
+  font-size: 0.93rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #818cf8;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.14);
+}
+
+/* Table */
+.jt-table-wrap {
+  overflow-x: auto;
+}
+
+.jt-table {
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.jt-table thead th {
+  background-color: #f8fafc;
+  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--jt-border);
+  padding: 0.85rem 1rem;
+  white-space: nowrap;
+}
+
+.jt-table tbody td {
+  padding: 0.95rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.91rem;
+}
+
+.jt-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Timeline for Status History */
+.jt-timeline {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.jt-timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--jt-border);
+}
+
+.jt-timeline-item {
+  position: relative;
+  padding-bottom: 1.25rem;
+}
+
+.jt-timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.jt-timeline-dot {
+  position: absolute;
+  left: -1.5rem;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--jt-primary);
+  border: 3px solid #eef2ff;
+}
+
+/* Auth Layout */
+.jt-auth-page {
+  min-height: 100vh;
+  display: flex;
+  background: radial-gradient(circle at top right, #eef2ff 0%, #f8fafc 45%, #ffffff 100%);
+}
+
+.jt-auth-hero {
+  background: linear-gradient(145deg, #0f172a 0%, #1e1b4b 55%, #312e81 100%);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.jt-auth-hero::after {
+  content: '';
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.32) 0%, transparent 70%);
+  bottom: -140px;
+  right: -120px;
+}
+
+/* Modal Backdrop */
+.jt-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.52);
+  backdrop-filter: blur(3px);
+  z-index: 1060;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.jt-modal-dialog {
+  background: #ffffff;
+  border-radius: var(--jt-radius);
+  border: 1px solid var(--jt-border);
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+  width: 100%;
+  max-width: 540px;
+  max-height: 92vh;
+  overflow-y: auto;
+}
+
+/* Mobile Sidebar Overlay */
+.jt-sidebar-overlay {
+  display: none;
+}
+
+@media (max-width: 991.98px) {
+  .jt-sidebar {
+    transform: translateX(-100%);
+  }
+
+  .jt-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .jt-sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    z-index: 1035;
+  }
+
+  .jt-main-area {
+    margin-left: 0;
+  }
+
+  .jt-navbar {
+    padding: 0 1rem;
+  }
+
+  .jt-content {
+    padding: 1.15rem;
+  }
+}
