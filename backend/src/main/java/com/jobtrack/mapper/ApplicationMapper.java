@@ -61,8 +61,8 @@ public class ApplicationMapper {
         application.setJobTitle(trimToNull(request.getJobTitle()));
         application.setJobDescription(trimToNull(request.getJobDescription()));
         application.setLocation(trimToNull(request.getLocation()));
-        application.setJobType(request.getJobType());
-        application.setWorkMode(request.getWorkMode());
+        application.setJobType(request.getJobType() != null ? request.getJobType() : application.getJobType());
+        application.setWorkMode(request.getWorkMode() != null ? request.getWorkMode() : application.getWorkMode());
         application.setSalary(trimToNull(request.getSalary()));
         application.setApplicationDate(request.getApplicationDate());
         application.setStatus(request.getStatus());

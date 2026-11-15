@@ -68,7 +68,8 @@ export const AuthProvider = ({ children }) => {
     return () => {
       active = false;
     };
-  }, [token, persistSession, logout]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const login = useCallback(
     async (credentials) => {
