@@ -1,14 +1,12 @@
 # JobTrack – Job Application Tracking System
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://job-track-fy35.vercel.app)
-[![Backend Status](https://img.shields.io/badge/Backend-Render-46E3B7?style=for-the-badge&logo=render)](https://jobtrack-ycen.onrender.com)
 [![Database](https://img.shields.io/badge/Database-PostgreSQL%2018-336791?style=for-the-badge&logo=postgresql)](https://neon.tech)
 [![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk)](https://www.oracle.com/java/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.1.2-6DB33F?style=for-the-badge&logo=springboot)](https://spring.io/projects/spring-boot)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
 
-> 🌐 **Live Application**: [https://job-track-fy35.vercel.app](https://job-track-fy35.vercel.app)  
-> 🔗 **Backend API**: [https://jobtrack-ycen.onrender.com](https://jobtrack-ycen.onrender.com)
+> 🌐 **Live Application**: [https://job-track-fy35.vercel.app](https://job-track-fy35.vercel.app)
 
 **JobTrack** is a production-deployed, full-stack career pipeline and interview tracking system built with **Java 21**, **Spring Boot**, **Spring Security (JWT)**, **Spring Data JPA / Hibernate**, **PostgreSQL 18**, and **React 19 (Vite)**.
 
