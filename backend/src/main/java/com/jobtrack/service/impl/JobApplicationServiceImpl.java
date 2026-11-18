@@ -24,10 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -127,8 +124,20 @@ public class JobApplicationServiceImpl implements JobApplicationService {
         };
 
         Page<JobApplication> results = jobApplicationRepository.findAll(spec, pageable);
-        List<JobApplicationResponse> content = results.getContent().stream()
-                .map(applicationMapper::toSummaryResponse)
+        List<JobApplication> apps = results.getContent();
+        List<Long> appIds = apps.stream().map(JobApplication::getId).toList();
+
+        Map<Long, Integer> interviewCounts = new HashMap<>();
+        if (!appIds.isEmpty()) {
+            for (Object[] row : interviewRepository.countInterviewsGroupedByApplicationIds(appIds)) {
+                Long appId = (Long) row[0];
+                Long count = (Long) row[1];
+                interviewCounts.put(appId, count != null ? count.intValue() : 0);
+            }
+        }
+
+        List<JobApplicationResponse> content = apps.stream()
+                .map(app -> applicationMapper.toSummaryResponse(app, interviewCounts.getOrDefault(app.getId(), 0)))
                 .toList();
 
         return PagedResponse.<JobApplicationResponse>builder()

@@ -74,6 +74,10 @@ public class ApplicationMapper {
 
     public JobApplicationResponse toSummaryResponse(JobApplication application) {
         int interviewCount = application.getInterviews() != null ? application.getInterviews().size() : 0;
+        return toSummaryResponse(application, interviewCount);
+    }
+
+    public JobApplicationResponse toSummaryResponse(JobApplication application, int interviewCount) {
         return JobApplicationResponse.builder()
                 .id(application.getId())
                 .companyName(application.getCompanyName())

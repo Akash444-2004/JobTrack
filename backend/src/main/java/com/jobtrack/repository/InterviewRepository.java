@@ -40,4 +40,7 @@ public interface InterviewRepository extends JpaRepository<Interview, Long> {
 
     long countByApplicationUserIdAndInterviewDateGreaterThanEqualAndOutcomeIn(
             Long userId, LocalDate today, List<InterviewOutcome> outcomes);
+
+    @Query("SELECT i.application.id, COUNT(i) FROM Interview i WHERE i.application.id IN :applicationIds GROUP BY i.application.id")
+    List<Object[]> countInterviewsGroupedByApplicationIds(@Param("applicationIds") List<Long> applicationIds);
 }
